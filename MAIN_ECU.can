@@ -1,0 +1,126 @@
+/*@!Encoding:1256*/
+includes
+{
+  
+}
+
+variables
+{
+  char flag=0;
+  //msTimer blinkTimer;
+   msTimer statuesTimer;
+   message MAIN_ECU4_Message ECU_MESSAGE;
+   message Message_start start_msg;
+   message Main_ECU_Hello_statues main_ecu_stues;
+}
+
+on start
+{
+
+}
+void compare()
+{
+
+ 
+}
+On message Middle_ECU_Hello_statues
+{
+  if(this.Middle_ECU_Hello==1)
+  {
+    flag|=(1<<2);
+  }
+  else
+   {
+     flag &= ~(1<<2);
+   }
+  
+}
+On message Front_ECU_Hello_statues
+{
+  if(this.Front_ECU_Hello==1)
+  {
+    flag|=(1<<1);
+  }
+  else
+  {
+    flag &= ~(1<<1);
+  }
+  
+}
+On message Back_ECU_Hello_statues
+{
+  if(this.Back_ECU_Hello==1)
+  {
+    flag|=(1<<0);
+  }
+  else
+  {
+    flag &= ~(1<<0);
+  }
+  
+}
+
+
+On message Back_Ultrasonic_state
+{
+  putValue(VIEW3,this.Ultrasonic_B_Right);
+  putValue(VIEW4,this.Ultrasonic_B_Middle);
+  putValue(VIEW5,this.Ultrasonic_B_Left);
+}
+
+On message Ultrasonic_state
+{
+  putValue(VIEW0,this.Ultrasonic_F_Right);
+  putValue(VIEW1,this.Ultrasonic_F_Middle);
+  putValue(VIEW2,this.Ultrasonic_F_left);
+}
+on envVar Main_ECU_statues
+{
+   getValue(Main_ECU_statues);
+   if(getValue(Main_ECU_statues)==1)
+  {
+    main_ecu_stues.Main_ECU_Hello=1;
+    flag=(1<<3);
+  }
+  else
+  {
+    main_ecu_stues.Main_ECU_Hello=0;
+     flag&=~(1<<3);
+  }
+  
+  
+}
+
+on envVar STOP_ON_CAR
+{
+ getValue(STOP_ON_CAR);
+  if(getValue(STOP_ON_CAR)==1)
+  {
+    
+    ECU_MESSAGE.OnOff = 1;
+    output(ECU_MESSAGE);
+    setTimer(statuesTimer,250);
+  }
+  else
+  {
+
+    ECU_MESSAGE.OnOff = 0;
+    output(ECU_MESSAGE);
+    cancelTimer(statuesTimer);
+  }
+}
+
+on timer statuesTimer
+{
+   setTimer(statuesTimer,250);
+     if(flag<0x0E)
+    {
+       start_msg.`START=0;
+       output(main_ecu_stues);
+    }
+    else
+    {
+       start_msg.`START=1;
+       output(start_msg);
+   }
+}

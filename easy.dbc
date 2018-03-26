@@ -1,0 +1,158 @@
+VERSION "DNNBNNNYNNNNNNNNNNNNNNNNNNYYYNNNNNNNNNNNNN/4/%%%/4/'%**4NNN///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ECU1_BACK MAIN_ECU Movement_ECU ECU_0
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ FuelLevel : 0|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ EngineSpeed : 0|15@1- (1,0) [0|0] "rpm" Vector__XXX
+ SG_ FlashLight : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ HeadLight : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 15 Message_start: 1 Vector__XXX
+ SG_ START : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 20 Back_ECU_Hello_statues: 1 Vector__XXX
+ SG_ Back_ECU_Hello : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 19 Middle_ECU_Hello_statues: 1 Vector__XXX
+ SG_ Middle_ECU_Hello : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 18 Front_ECU_Hello_statues: 1 Vector__XXX
+ SG_ Front_ECU_Hello : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 17 Main_ECU_Hello_statues: 1 Vector__XXX
+ SG_ Main_ECU_Hello : 0|8@1- (1,0) [0|0] "" Vector__XXX
+
+BO_ 16 MAIN_ECU4_Message: 1 Vector__XXX
+ SG_ OnOff : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 64 Back_Ultrasonic_state: 3 Vector__XXX
+ SG_ Ultrasonic_B_Right : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Ultrasonic_B_Middle : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Ultrasonic_B_Left : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 32 Fast_decision_Message: 8 Vector__XXX
+
+BO_ 48 Ultrasonic_state: 3 Vector__XXX
+ SG_ Ultrasonic_F_Right : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Ultrasonic_F_Middle : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Ultrasonic_F_left : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+
+
+EV_ Back_ECU_statues: 0 [0|0] "" 0 1 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Middle_ECU_statues: 0 [0|0] "" 0 2 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Front_ECU_statues: 0 [0|0] "" 0 3 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Main_ECU_statues: 0 [0|0] "" 0 4 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Car_wheel: 0 [0|0] "" 0 5 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VIEW5: 0 [0|0] "" 0 6 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VIEW4: 0 [0|0] "" 0 7 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VIEW3: 0 [0|0] "" 0 8 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VIEW2: 0 [0|0] "" 0 9 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VIEW1: 0 [0|0] "" 0 10 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VIEW0: 0 [0|0] "" 0 11 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Move_Ahead: 0 [0|0] "" 0 12 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Move_Stop: 0 [0|1] "" 0 13 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Move_left: 0 [0|0] "" 0 14 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ Move_Right: 0 [0|0] "" 0 15 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ STOP_ON_CAR: 0 [0|0] "" 0 16 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULTRA1_RIGHTSIDE_Middle: 0 [0|0] "" 0 17 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULTRA0_LEFTSIDE_Middle: 0 [0|0] "" 0 18 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULRTA2_RIGHT_BACK: 0 [0|0] "" 0 19 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULRTA0_Middle_BACK: 0 [0|0] "" 0 20 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULRTA1_LEFT_BACK: 0 [0|0] "" 0 21 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULTRA2: 0 [0|0] "" 0 22 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULTRA1: 0 [0|0] "" 0 23 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ULTRA0: 0 [0|0] "" 0 24 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BO_  "GenMsgFastOnStart" INT 0 0;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BU_  "ILUsed" ENUM  "Yes","No";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT 0 100000000000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition";
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 999999;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 1 1000;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 2 50000;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","not_used","not_used","not_used","not_used","Cyclic","not_used","IfActive";
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 2 100000;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "GenMsgFastOnStart" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 1;
+BA_DEF_DEF_  "GenMsgCycleTime" 2;
+BA_DEF_DEF_  "GenMsgSendType" "not_used";
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 100;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "NodeLayerModules" "CANoeILNLVector.dll";
+BA_ "BusType" "CAN";
+BA_ "GenSigSendType" SG_ 3221225472 HeadLight 3;
+VAL_ 16 OnOff 1 "On" 0 "Off" ;
+VAL_ Move_Stop 1 "On" 0 "Off" ;
+

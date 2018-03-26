@@ -1,0 +1,98 @@
+/*@!Encoding:1256*/
+includes
+{
+  
+}
+
+variables
+{
+  msTimer blinkTimer;
+  msTimer statuesTimer; 
+  message Front_ECU_Hello_statues statues;
+  message Ultrasonic_state ultra;
+  
+}
+on start
+{
+
+}
+on message Message_start
+{
+  
+  if(this.`START==0x1)
+  {
+    setTimer(blinkTimer,300);
+    cancelTimer(statuesTimer);
+    
+  }
+  else if(this.`START==0x00)
+  {
+    cancelTimer(blinkTimer);
+    setTimer(statuesTimer,300);
+  } 
+}
+on message MAIN_ECU4_Message
+{
+  
+  if(this.OnOff==0x1)
+  {
+    setTimer(statuesTimer,250);
+    
+  }
+  else if (this.OnOff==0x00)
+  {
+    cancelTimer(statuesTimer);
+  }
+  
+}
+on envVar ULTRA0
+{
+ ultra.Ultrasonic_F_left=getValue(ULTRA0);
+   output(ultra);
+
+  
+}
+on envVar ULTRA1
+{
+ultra.Ultrasonic_F_Middle=getValue(ULTRA1);
+   output(ultra);
+  
+  
+}
+on envVar ULTRA2
+{
+  ultra.Ultrasonic_F_Right=getValue(ULTRA2);
+   output(ultra);
+  
+  
+}
+on envVar Front_ECU_statues
+{
+
+  if(getValue(Front_ECU_statues)==1)
+  {
+    
+    statues.Front_ECU_Hello= 1;
+    output(statues);
+  }
+  else
+  {
+
+    statues.Front_ECU_Hello= 0;
+    output(statues);
+  }
+}
+
+
+on timer blinkTimer
+{
+  setTimer(blinkTimer,250);
+   output(ultra);
+  
+}
+on timer statuesTimer
+{
+  setTimer(statuesTimer,300);
+  output(statues);
+  
+}

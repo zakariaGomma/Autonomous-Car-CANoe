@@ -1,0 +1,102 @@
+/*@!Encoding:1256*/
+includes
+{
+  
+}
+
+variables
+{
+ 
+  msTimer blinkTimer;
+  msTimer statuesTimer; 
+  message Back_ECU_Hello_statues statues;
+  message Back_Ultrasonic_state back_message;
+ 
+  
+}
+on start
+{
+
+}
+on message Message_start
+{
+  
+  if(this.`START==0x1)
+  {
+    setTimer(blinkTimer,300);
+    cancelTimer(statuesTimer);
+    
+  }
+  else if(this.`START==0x00)
+  {
+    cancelTimer(blinkTimer);
+    setTimer(statuesTimer,300);
+  } 
+}
+
+on message MAIN_ECU4_Message
+{
+  
+  if(this.OnOff==0x1)
+  {
+    setTimer(statuesTimer,300);
+    
+  }
+  else if(this.OnOff==0x00)
+  {
+    cancelTimer(statuesTimer);
+  } 
+}
+on envVar ULRTA1_LEFT_BACK
+{
+    back_message.Ultrasonic_B_Left=getValue(ULRTA1_LEFT_BACK);
+   output(back_message);
+  
+}
+on envVar ULRTA0_Middle_BACK
+{
+    back_message.Ultrasonic_B_Middle=getValue(ULRTA0_Middle_BACK);
+   output(back_message);
+  
+}
+on envVar ULRTA2_RIGHT_BACK
+{
+   back_message.Ultrasonic_B_Right=getValue(ULRTA2_RIGHT_BACK);
+   output(back_message);
+  
+  
+}
+
+on envVar Back_ECU_statues
+{
+ getValue(Back_ECU_statues);
+  if(getValue(Back_ECU_statues)==1)
+  {
+    
+    statues.Back_ECU_Hello= 1;
+    output(statues);
+  }
+  else
+  {
+
+    statues.Back_ECU_Hello= 0;
+    output(statues);
+    cancelTimer(blinkTimer);
+    setTimer(statuesTimer,300);
+  }
+}
+
+on timer blinkTimer
+{
+  setTimer(blinkTimer,260);
+  output(back_message);
+  cancelTimer(statuesTimer);
+  
+}
+
+on timer statuesTimer
+{
+  setTimer(statuesTimer,300);
+     output(statues);
+  
+}
